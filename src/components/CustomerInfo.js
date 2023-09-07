@@ -24,13 +24,13 @@ const CustomerInfo = ({ customer, onDeleteCustomer, OnContactDetailsCustomer }) 
       <div className="flex-grow">
         <div className="flex items-center">
           <span className="flex-none font-medium text-2xl text-blue-500">
-            {customer.petName}
+            {customer.companyName}
           </span>
           <span className="flex-grow text-right">{customer.aptDate}</span>
         </div>
         <div>
-          <b className="font-bold text-blue-500">Owner:</b>{" "}
-          {customer.ownerName}
+          <b className="font-bold text-blue-500">ContactPerson:</b>{" "}
+          {customer.contactPerson}
         </div>
         <div className="leading-tight">{customer.aptNotes}</div>
         

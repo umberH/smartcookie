@@ -21,33 +21,33 @@ const DropDown = ({
           aria-labelledby="options-menu"
         >
           <div
-            onClick={() => onSortByChange("centreName")}
+            onClick={() => onSortByChange("companyName")}
             className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 flex justify-between cursor-pointer"
             role="menuitem"
           >
-            Centre Name {sortBy === "centreName" ? <BiCheck /> : null}
+            Company Name {sortBy === "companyName" ? <BiCheck /> : null}
           </div>
           <div
-            onClick={() => onSortByChange("ownerName")}
+            onClick={() => onSortByChange("suburb")}
             className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 flex justify-between cursor-pointer"
             role="menuitem"
           >
-            Owner Name {sortBy === "ownerName" ? <BiCheck /> : null}
+            Suburb {sortBy === "suburb" ? <BiCheck /> : null}
           </div>
           <div
-            onClick={() => onSortByChange("postCode")}
+            onClick={() => onSortByChange("postcode")}
             className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 flex justify-between cursor-pointer"
             role="menuitem"
           >
-            Post Code {sortBy === "postCode" ? <BiCheck /> : null}
+            Postcode {sortBy === "postcode" ? <BiCheck /> : null}
           </div>
-          <div
+          {/* <div
             onClick={() => onSortByChange("aptDate")}
             className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 flex justify-between cursor-pointer"
             role="menuitem"
           >
             Date {sortBy === "aptDate" ? <BiCheck /> : null}
-          </div>
+          </div> */}
           <div
             onClick={() => onOrderByChange("asc")}
             className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 flex justify-between cursor-pointer border-gray-1 border-t-2"

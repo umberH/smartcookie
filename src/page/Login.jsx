@@ -64,11 +64,11 @@ const Login = () => {
                         <div className='flex flex-col justify-center h-screen'>
                             <div className=" px-10 ">
                                 <div>
-                                    <Text className="text-2xl text-white text-center font-bold mb-2">
-                                        Focus<span className="text-tertiary">App</span>
+                                    <Text className="text-2xl text-center font-bold mb-2">
+                                        Appointment<span className="text-tertiary">App</span>
                                     </Text>
 
-                                    <h2 className="text-white text-center md:text-sm text-xs tracking-tight text-gray-900">
+                                    <h2 className="text-center md:text-sm text-xs tracking-tight text-gray-900">
                                         Welcome Back
                                     </h2>
                                 </div>
@@ -154,13 +154,13 @@ const Login = () => {
                                 </div>
 
                             </div>
-
+{/* 
                             <p className="text-sm mt-10 text-white text-center">
                                 No account yet?{' '}
                                 <NavLink to="/signup" className="underline text-tertiary">
                                     Sign up
                                 </NavLink>
-                            </p>
+                            </p> */}
                         </div>
 
 

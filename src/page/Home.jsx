@@ -16,7 +16,6 @@ import Search from "../components/Search";
 import CustomerInfo from "../components/CustomerInfo";
 import AddCustomer from "../components/AddCustomer";
 import { BiCalendar } from "react-icons/bi";
-import axios from "axios";
 import ReactPaginate from 'react-paginate';
 //import Paginate from '../components/Paginate';
 
@@ -34,7 +33,7 @@ const Home = () => {
 
     const startIndex = currentPage * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
-    //const subset = customerList.slice(startIndex, endIndex);
+    
 
     const handlePageChange = (selectedPage) => {
         setCurrentPage(selectedPage.selected);
@@ -65,10 +64,11 @@ const Home = () => {
    const filteredCustomer = customerList
      .filter((item) => {
        return (
-         item.petName.toLowerCase().includes(query.toLowerCase()) ||
-         item.ownerName.toLowerCase().includes(query.toLowerCase()) ||
-          item.aptNotes.toLowerCase().includes(query.toLowerCase()) 
-        //  item.postCode.toLowerCase().includes(query.toLowerCase())
+        //  item.companyName.toLowerCase().includes(query.toLowerCase()) ||
+        //  item.contactPerson.toLowerCase().includes(query.toLowerCase()) ||
+        //  item.address.toLowerCase().includes(query.toLowerCase()) ||
+        //  item.suburb.toLowerCase().includes(query.toLowerCase()) ||
+         item.postcode.includes(query) 
        );
    })
      .sort((a, b) => {
@@ -81,7 +81,7 @@ const Home = () => {
      const subset = filteredCustomer.slice(startIndex, endIndex);
 
    const fetchData = useCallback(() => {
-   fetch("data.json")
+   fetch("customer.json")
        .then((response) => response.json())
        .then((data) => {
         console.log(data)
@@ -98,7 +98,7 @@ const Home = () => {
 
   useEffect(() => {
     fetchData();
-    //console.log(fetchData())
+    console.log(fetchData())
   }, [fetchData]);
     // const user = useSelector((state) => state.user.value);
     // const { value, status } = useSelector((state) => state.note);
@@ -151,7 +151,7 @@ const Home = () => {
                         </div> */}
                         <h1 className="text-5xl mb-4">
           <BiCalendar className="inline-block text-red-400 align-top" />
-           Your Customers
+           Smart Cookie Customers
         </h1>
          <AddCustomer
            onSendCustomer={(customer) => {
@@ -214,14 +214,17 @@ const Home = () => {
                                 }}
                                 customer={customer}
                                 key={customer.id}
+                                // OnContactDetailsCustomer={(customerId)} => {
+
+                                // }
                             />
                             );
                         })}  
                         <ReactPaginate
                             onPageChange={handlePageChange}
                             pageCount={totalPages}
-                            previousLabel={'<<'}
-                            nextLabel={'>>'}
+                            previousLabel={'Prev'}
+                            nextLabel={'Next'}
                             containerClassName={'pagination-container'}
                             pageLinkClassName={'page-number'}
                             previousLinkClassName={'page-number'}

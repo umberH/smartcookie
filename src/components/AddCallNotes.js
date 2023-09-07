@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { BiCalendarPlus } from "react-icons/bi";
 
-const AddCustomer = ({ onSendCustomer, lastId }) => {
+const AddCallNotes = ({ onUpdateNotes, lastId }) => {
   const clearData = {
     companyName: "",
     contactPerson: "",
@@ -20,21 +20,19 @@ const AddCustomer = ({ onSendCustomer, lastId }) => {
 
   const formDataPosted = () => {
     if (formData.companyName && formData.contactPerson && formData.address && formData.suburb && formData.postcode && formData.state && formData.contactNo ) {
-      const customerInfo = {
+      const callNotes = {
         id: lastId + 1,
         companyName: formData.companyName,
-        contactPerson: formData.contactPerson,
-        position: formData.position,
-        address: formData.address,
-        suburb: formData.suburb,
-        postcode:formData.postcode,
-        state:formData.state,
-        contactNo:formData.contactNo,
-        emailAddress:formData.emailAddress,
-        websiteURL:formData.websiteURL,
+        contactDate: formData.contactDate,
+        notes: formData.notes,
+        DNFollowupDate: formData.address,
+        DNFollowupNotes: formData.suburb,
+        DTFollowupDate:formData.postcode,
+        DTFollowupAction:formData.DTFollowupAction,
+        DTApptTime:formData.DTApptTime,
         
       };
-      onSendCustomer(customerInfo);
+      onUpdateNotes(callNotes);
       setFormData(clearData);
       setToggleForm(!toggleForm);
     } else {
@@ -331,4 +329,4 @@ const AddCustomer = ({ onSendCustomer, lastId }) => {
   );
 };
 
-export default AddCustomer;
+export default AddCallNotes;

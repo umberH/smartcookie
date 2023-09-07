@@ -1,0 +1,11 @@
+{
+  "projects": {
+    "default": "smartcookieappointments"
+  },
+  "targets": {},
+  "etags": {
+    "smartcookieappointments": {
+      "extensionInstances": {}
+    }
+  }
+}

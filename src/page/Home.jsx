@@ -40,28 +40,28 @@ const Home = () => {
         setCurrentPage(selectedPage.selected);
     };
     
-    useEffect(() => {
-        db.collection("customersData").onSnapshot((snapshot) => {
-            setCustomersData(
-                snapshot.docs.map((doc) => ({
-                    id: doc.id,
-                    data: doc.data(),
-                }))
-            );
-        });
-        console.log({ customersData });
-    }, []);
+    // useEffect(() => {
+    //     db.collection("customersData").onSnapshot((snapshot) => {
+    //         setCustomersData(
+    //             snapshot.docs.map((doc) => ({
+    //                 id: doc.id,
+    //                 data: doc.data(),
+    //             }))
+    //         );
+    //     });
+    //     console.log({ customersData });
+    // }, []);
  
-    const submit = (e) => {
-        e.preventDefault();
-        db.collection("customersData").add({
-            name: customerName,
-            password: customerPassword,
-        });
+    // const submit = (e) => {
+    //     e.preventDefault();
+    //     db.collection("customersData").add({
+    //         name: customerName,
+    //         password: customerPassword,
+    //     });
  
-        setCustomerName("");
-        setCustomerPassword("");
-    };
+    //     setCustomerName("");
+    //     setCustomerPassword("");
+    // };
    const filteredCustomer = customerList
      .filter((item) => {
        return (

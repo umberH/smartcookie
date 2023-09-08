@@ -2,10 +2,20 @@
     "id": "1",
     "companyName": "Google",    
     "contactDate": "2019-01-01",
-    "Notes": "This is a note",
+    "notes": "This is a note",
     "DNFollowupDate": "2019-01-01",
     "DNFollowupNotes": "This is a note",
     "DTFollowupDate": "2019-01-01",
     "DTFollowupAction": "",
     "DTApptTime": "10:00"
-},]
+},{
+    "id": "2",
+    "companyName": "Google",    
+    "contactDate": "2019-01-01",
+    "notes": "This is a note",
+    "DNFollowupDate": "2019-01-01",
+    "DNFollowupNotes": "This is a note",
+    "DTFollowupDate": "2019-01-01",
+    "DTFollowupAction": "",
+    "DTApptTime": "10:00"
+}]

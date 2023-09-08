@@ -17,6 +17,8 @@ import CustomerInfo from "../components/CustomerInfo";
 import AddCustomer from "../components/AddCustomer";
 import { BiCalendar } from "react-icons/bi";
 import ReactPaginate from 'react-paginate';
+import Collapsible from "../components/Collapsible";
+import CallNotesInfo from "../components/CallNotesInfo";
 //import Paginate from '../components/Paginate';
 
 const Home = () => {
@@ -34,6 +36,7 @@ const Home = () => {
     const startIndex = currentPage * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     
+    let [callNotesList, setCallNoteList] = useState([]);
 
     const handlePageChange = (selectedPage) => {
         setCurrentPage(selectedPage.selected);
@@ -64,16 +67,17 @@ const Home = () => {
    const filteredCustomer = customerList
      .filter((item) => {
        return (
-        //  item.companyName.toLowerCase().includes(query.toLowerCase()) ||
-        //  item.contactPerson.toLowerCase().includes(query.toLowerCase()) ||
-        //  item.address.toLowerCase().includes(query.toLowerCase()) ||
-        //  item.suburb.toLowerCase().includes(query.toLowerCase()) ||
+         item.companyName.toLowerCase().includes(query.toLowerCase()) ||
+         item.contactPerson.toLowerCase().includes(query.toLowerCase()) ||
+         item.address.toLowerCase().includes(query.toLowerCase()) ||
+         item.suburb.toLowerCase().includes(query.toLowerCase()) ||
          item.postcode.includes(query) 
        );
    })
      .sort((a, b) => {
        let order = orderBy === "asc" ? 1 : -1;
-       return a[sortBy].toLowerCase() < b[sortBy].toLowerCase()
+       //return a[sortBy].toLowerCase() < b[sortBy].toLowerCase()
+       return a[sortBy] < b[sortBy]
          ? -1 * order
         : 1 * order;
      });
@@ -96,8 +100,25 @@ const Home = () => {
        });
   }, []);
 
+  const fetchCalls = useCallback(() => {
+    fetch("callNotes.json")
+        .then((response) => response.json())
+        .then((data) => {
+         console.log(data)
+         setCallNoteList(data);
+        //  console.log("items_per_page",itemsPerPage)
+        //   setTotalPages(Math.ceil(customerList.length/itemsPerPage))
+        //   console.log(customerList.length)
+        //   console.log(totalPages)
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+   }, []);
+
   useEffect(() => {
     fetchData();
+    fetchCalls();
     console.log(fetchData())
   }, [fetchData]);
     // const user = useSelector((state) => state.user.value);
@@ -204,20 +225,42 @@ const Home = () => {
                         
       {subset.map((customer) => { 
                             return (
-                            <CustomerInfo
-                                onDeleteCustomer={(customerId) => {
-                                setCustomerList(
-                                    customerList.filter(
-                                    (customer) => customerId !== customer.id
-                                    )
-                                );
-                                }}
-                                customer={customer}
-                                key={customer.id}
-                                // OnContactDetailsCustomer={(customerId)} => {
+                            <Collapsible key="{customer.id}" title={customer.companyName} defaultExpanded="true">
+                                <CustomerInfo
+                                    onDeleteCustomer={(customerId) => {
+                                    setCustomerList(
+                                        customerList.filter(
+                                        (customer) => customerId !== customer.id
+                                        )
+                                    );
+                                    }}
+                                    customer={customer}
+                                    key={customer.id}
+                                    // OnContactDetailsCustomer={(customerId)} => {
 
-                                // }
-                            />
+                                    // }
+                                />
+                                {/* <div class="line"></div> */}
+                                <Collapsible key="{customer.id}" title={customer.postcode} defaultExpanded="true">
+                                    Now you can see the Previous contact Attempts to the Customer. <br/><br/>
+                                    You can add new contact detail or can view the existing ones.
+                                    <CallNotesInfo
+                                    //onDeleteCustomer={(customerId) => {
+                                    // setCallNoteList(
+                                    //     callNotes.filter(
+                                    //     (customer) => customerId !== customer.id
+                                    //     )
+                                    // );
+                                    //}}
+                                    callDetail={callNotesList}
+                                    //key={customer.id}
+                                    //OnContactDetailsCustomer={(customerId)} => {
+
+                                    //}
+                                />
+                                </Collapsible>
+                                {/* <div class="line"></div> */}
+                            </Collapsible>
                             );
                         })}  
                         <ReactPaginate

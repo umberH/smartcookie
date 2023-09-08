@@ -1,15 +1,29 @@
 [
     {
     "id": "0",
-    "companyName": "here",
-    "contactPerson": "there",
+    "companyName": "Noah's Arc Centre",
+    "contactPerson": "Emily",
     "position": "manager",
-    "address": "somewhere",
+    "address": "155 Florence Avenue",
     "suburb": "Eastlakes",
     "postcode": "2018", 
     "state": "NSW",
     "contactNo": "090990",
     "emailAddress": "amks",
-    "wesiteURL": "njsk",
+    "wesiteURL": "njsk"
+},
+{
+    "id": "1",
+    "companyName": "Noah's Arc Centre",
+    "contactPerson": "Emily",
+    "position": "manager",
+    "address": "155 Florence Avenue",
+    "suburb": "Rosebery",
+    "postcode": "2018", 
+    "state": "NSW",
+    "contactNo": "090990",
+    "emailAddress": "amks",
+    "wesiteURL": "njsk"
 }
+
 ]

@@ -26,18 +26,31 @@ const CustomerInfo = ({ customer, onDeleteCustomer, OnContactDetailsCustomer }) 
           <span className="flex-none font-medium text-2xl text-blue-500">
             {customer.companyName}
           </span>
-          <span className="flex-grow text-right">{customer.aptDate}</span>
+          <span className="flex-grow text-right">{customer.address}</span>{" "}
+          <span className="flex-grow text-right">{customer.suburb}</span>{" "}
+          <span className="flex-grow text-right">{customer.postcode}</span>{" "}
         </div>
         <div>
           <b className="font-bold text-blue-500">ContactPerson:</b>{" "}
           {customer.contactPerson}
+          {" "}
+          {customer.position}
         </div>
-        <div className="leading-tight">{customer.aptNotes}</div>
+        <div>
+          <b className="font-bold text-blue-500">Contact Details:</b>{" "}
+          <span className="flex-grow text-right">{customer.contactNo}</span>{"  "}
+          </div>
+          <div>
+          <b className="font-bold text-blue-500">Email:</b>{" "}
+          {customer.emailAddress}{"  "}
+          </div> <div>
+          <b className="font-bold text-blue-500">Website:</b>{" "}
+          {customer.wesiteURL}
+        </div>
+        {/* <div className="leading-tight">{customer.position}</div>
+        <div className="leading-tight">{customer.address}</div> */}
         
-       
       </div>
-      {/* <div> <BiBookBookmark /></div> */}
-      
     </li>
   );
 };
